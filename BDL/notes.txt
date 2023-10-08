@@ -1,0 +1,46 @@
+AIzaSyAL4hW2Ocv1ceBlln_auCS5arzf9eo3hek
+
+Troubleshooting info:
+  Principal: mahekkathiriya91@gmail.com
+  Resource: 522309567947
+  Troubleshooting URL: console.cloud.google.com/iam-admin/troubleshooter;permissions=resourcemanager.projects.get;principal=mahekkathiriya91@gmail.com;resources=%2F%2Fcloudresourcemanager.googleapis.com%2Fprojects%2F522309567947
+
+Missing permissions:
+  resourcemanager.projects.get
+
+mahek-460@bdl-task-1.iam.gserviceaccount.com
+
+
+setx GOOGLE_APPLICATION_CREDENTIALS "Downloads\bdl-task-1-39c284e69753"
+
+import os
+from google.cloud import translate_v2 as translate
+
+# Set the path to the service account key JSON file containing the API key
+os.environ["GOOGLE_APPLICATION_CREDENTIALS"] = "Downloads\bdl-task-1-39c284e69753"
+
+# Function to translate the English sentence to a language of choice using google-cloud-translate
+def translate_sentence(sentence, target_language):
+    translate_client = translate.Client()
+    translated_sentence = translate_client.translate(sentence, target_language=target_language)
+    return translated_sentence['translatedText']
+
+# Translate the prediction to a language of choice (e.g., French)
+target_language = 'fr'
+for row in result_list:
+    sentence = generate_sentence(row)
+    translated_sentence = translate_sentence(sentence, target_language)
+    print(translated_sentence)
+
+
+
+https://storage.cloud.google.com/mahek_bdl_bucket1/results1.csv
+gs://mahek_bdl_bucket1/results1.csv
+
+
+Data transfer to a table. 
+mahekkathiriya91@cloudshell:~ (bdl-task-1)$ bq load --source_format=CSV --max_bad_records=10 --skip_leading_rows=1 Mobile_Price.mobile_data gs://mahek_bdl_bucket1/results1.csv
+Waiting on bqjob_r186574eac31597e2_0000018997cd301b_1 ... (1s) Current status: DONE 
+
+
+
